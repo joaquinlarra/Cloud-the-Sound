@@ -1,5 +1,11 @@
 import * as types from '../constants/ActionTypes';
+import {request} from '../helpers/Request';
 
 export function fetchSongs() {
-    return {type: types.FETCH_SONGS};
+    request('http://soundcloud.com/whatever')
+    .then((response) => {
+        console.log(response);
+    }, (error) => {
+        console.log(error);
+    });
 }
