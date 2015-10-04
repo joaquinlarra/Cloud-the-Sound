@@ -1,18 +1,21 @@
 import * as types from '../constants/ActionTypes';
-import {constructUrl} from '../helpers/Songs';
 
-const initialState = {
-    activePlaylist: null,
-};
+export function activeSongId(state = null, action) {
+    switch(action.type) {
+        case action.CHANGE_ACTIVE_SONG_ID:
+            return action.activeSongId;
+        default:
+            return state;
+    }
+}
 
-export default function songs(state = initialState, action) {
-    switch (action.type) {
-    case types.CHANGE_ACTIVE_PLAYLIST:
-        return Object.assign({}, state, {
-            activePlaylist: action.playlist
-        });
-
-    default:
-        return state;
+export function songs(state={}, action) {
+    switch(action.type) {
+        case action.RECEIVE_SONG:
+            return Object.assign({}, state, {
+                [action.songId]: action.song
+            });
+        default:
+            return state;
     }
 }
