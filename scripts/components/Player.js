@@ -1,5 +1,4 @@
 import React, {Component, PropTypes} from 'react';
-import ReactDOM from 'react-dom';
 import {changeCurrentTime, changeSong} from '../actions/player';
 import Playlist from '../components/Playlist';
 import Popover from '../components/Popover';
@@ -49,7 +48,7 @@ class Player extends Component {
     componentDidMount() {
         document.addEventListener('keypress', this.onKeyPress);
 
-        const audioElement = ReactDOM.findDOMNode(this.refs.audio);
+        const audioElement = React.findDOMNode(this.refs.audio);
         audioElement.addEventListener('ended', this.handleEnded, false);
         audioElement.addEventListener('loadedmetadata', this.handleLoadedMetadata, false);
         audioElement.addEventListener('loadstart', this.handleLoadStart, false);
@@ -65,13 +64,13 @@ class Player extends Component {
             return;
         }
 
-        ReactDOM.findDOMNode(this.refs.audio).play();
+        React.findDOMNode(this.refs.audio).play();
     }
 
     componentWillUnmount() {
         document.removeEventListener('keypress', this.onKeyPress, false);
 
-        const audioElement = ReactDOM.findDOMNode(this.refs.audio);
+        const audioElement = React.findDOMNode(this.refs.audio);
         audioElement.removeEventListener('ended', this.handleEnded, false);
         audioElement.removeEventListener('loadedmetadata', this.handleLoadedMetadata, false);
         audioElement.removeEventListener('loadstart', this.handleLoadStart, false);
@@ -97,14 +96,14 @@ class Player extends Component {
     }
 
     changeVolume(e) {
-        const audioElement = ReactDOM.findDOMNode(this.refs.audio);
+        const audioElement = React.findDOMNode(this.refs.audio);
         const volume = (e.clientX - e.currentTarget.offsetLeft) / e.currentTarget.offsetWidth;
         audioElement.volume = volume;
     }
 
     handleEnded() {
         if (this.state.repeat) {
-            ReactDOM.findDOMNode(this.refs.audio).play();
+            React.findDOMNode(this.refs.audio).play();
         } else if (this.state.shuffle) {
             this.changeSong(CHANGE_TYPES.SHUFFLE);
         } else {
@@ -113,7 +112,7 @@ class Player extends Component {
     }
 
     handleLoadedMetadata() {
-        const audioElement = ReactDOM.findDOMNode(this.refs.audio);
+        const audioElement = React.findDOMNode(this.refs.audio);
         this.setState({
             duration: Math.floor(audioElement.duration)
         });
@@ -149,7 +148,7 @@ class Player extends Component {
 
     handleSeekMouseMove(e) {
         const {dispatch} = this.props;
-        const seekBar = ReactDOM.findDOMNode(this.refs.seekBar);
+        const seekBar = React.findDOMNode(this.refs.seekBar);
         const diff = e.clientX - seekBar.offsetLeft;
         const pos = diff < 0 ? 0 : diff;
         let percent = pos / seekBar.offsetWidth;
@@ -170,7 +169,7 @@ class Player extends Component {
         this.setState({
             isSeeking: false,
         }, function() {
-            ReactDOM.findDOMNode(this.refs.audio).currentTime = currentTime;
+            React.findDOMNode(this.refs.audio).currentTime = currentTime;
         });
     }
 
@@ -208,7 +207,7 @@ class Player extends Component {
     }
 
     handleVolumeMouseMove(e) {
-        const volumeBar = ReactDOM.findDOMNode(this.refs.volumeBar);
+        const volumeBar = React.findDOMNode(this.refs.volumeBar);
         const diff = e.clientX - volumeBar.offsetLeft;
         const pos = diff < 0 ? 0 : diff;
         let percent = pos / volumeBar.offsetWidth;
@@ -217,7 +216,7 @@ class Player extends Component {
         this.setState({
             volume: percent
         });
-        ReactDOM.findDOMNode(this.refs.audio).volume = percent;
+        React.findDOMNode(this.refs.audio).volume = percent;
     }
 
     handleVolumeMouseUp(e) {
@@ -231,7 +230,7 @@ class Player extends Component {
         this.setState({
             isSeeking: false,
         }, function() {
-            ReactDOM.findDOMNode(this.refs.audio).volume = this.state.volume;
+            React.findDOMNode(this.refs.audio).volume = this.state.volume;
         });
     }
 
@@ -256,7 +255,7 @@ class Player extends Component {
 
     seek(e) {
         const {dispatch} = this.props;
-        const audioElement = ReactDOM.findDOMNode(this.refs.audio);
+        const audioElement = React.findDOMNode(this.refs.audio);
         const currentTime = Math.floor(((e.clientX - e.currentTarget.offsetLeft) / e.currentTarget.offsetWidth) * this.state.duration);
 
         dispatch(changeCurrentTime(currentTime));
@@ -264,7 +263,7 @@ class Player extends Component {
     }
 
     toggleMute() {
-        const audioElement = ReactDOM.findDOMNode(this.refs.audio);
+        const audioElement = React.findDOMNode(this.refs.audio);
         if (this.state.muted) {
             audioElement.muted = false;
         } else {
@@ -275,7 +274,7 @@ class Player extends Component {
     }
 
     togglePlay() {
-        const audioElement = ReactDOM.findDOMNode(this.refs.audio);
+        const audioElement = React.findDOMNode(this.refs.audio);
         if (this.state.isPlaying) {
             audioElement.pause();
         } else {

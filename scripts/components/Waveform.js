@@ -1,5 +1,4 @@
 import React, {Component, PropTypes} from 'react';
-import ReactDOM from 'react-dom';
 import {changeCurrentTime} from '../actions/player';
 
 class Waveform extends Component {
@@ -15,7 +14,7 @@ class Waveform extends Component {
     }
 
     componentDidMount() {
-        // const canvas = ReactDOM.findDOMNode(this.refs.canvas);
+        // const canvas = React.findDOMNode(this.refs.canvas);
         // const context = canvas.getContext('2d');
         // let img = new Image();
         // img.onload = () => {

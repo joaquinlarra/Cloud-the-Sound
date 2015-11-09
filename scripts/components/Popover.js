@@ -1,5 +1,4 @@
 import React, {Component, PropTypes} from 'react';
-import ReactDOM from 'react-dom';
 
 class Popover extends Component {
     constructor(props) {
@@ -35,7 +34,7 @@ class Popover extends Component {
         }
 
         e.stopPropagation();
-        const localNode = ReactDOM.findDOMNode(this);
+        const localNode = React.findDOMNode(this);
         let source = e.target;
 
         while(source.parentNode) {
