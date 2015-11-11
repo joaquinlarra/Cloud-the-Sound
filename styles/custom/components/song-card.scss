@@ -13,9 +13,7 @@
         }
 
         .song-card-playing-icon {
-            position: relative;
             opacity: 1;
-            z-index: 2;
         }
     }
 }
@@ -53,7 +51,6 @@
 }
 
 .song-card-playing {
-    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
