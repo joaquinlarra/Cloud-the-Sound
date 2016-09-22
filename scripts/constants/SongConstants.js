@@ -1,7 +1,6 @@
 export const CHANGE_TYPES = {
   NEXT: 'next',
   PLAY: 'play',
-  PREV: 'prev',
   SHUFFLE: 'shuffle',
 };
 
