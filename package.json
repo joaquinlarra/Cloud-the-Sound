@@ -27,7 +27,7 @@
     "extract-text-webpack-plugin": "^0.8.2",
     "isomorphic-fetch": "^2.1.1",
     "jsx-loader": "^0.13.2",
-    "lodash": "^3.10.1",
+    "lodash": "^4.17.15",
     "mocha": "^2.3.3",
     "moment": "^2.10.6",
     "nock": "^2.15.0",
